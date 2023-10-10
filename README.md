@@ -32,3 +32,13 @@ django-admin startapp crud_blog_web
 ```sh 
 python manage.py migrate
 ```
+### Tworzenie super użytkownika
+```sh
+python manage.py createsuperuser
+```
+Dla potrzeb projektu wprowadzone dane to:
+```sh
+Username: xman
+Email: szymon.guzik@gdansk.merito.pl
+Password: qwerty2023
+```
