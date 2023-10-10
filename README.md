@@ -63,3 +63,11 @@ Teraz należy wykonać ponownie migracje za pomocą polecenia
 ```sh 
 python manage.py migrate
 ```
+Aby aplikacja była widoczna w panelu admina należy ją zarejestrować w admin.py <br>
+Lokalizacja pliku `crud_blog_web`
+```sh
+from django.contrib import admin
+from .models import Article
+# Register your models here.
+admin.site.register(Article)
+```
