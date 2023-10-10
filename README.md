@@ -97,7 +97,7 @@ class Article(models.Model):
     title = models.CharField(max_length=250, blank=False, unique=False)
     content = models.TextField(default='')
     year = models.PositiveSmallIntegerField(default=2023)
-    imgThumb = models.ImageField(upload_to="media/img", null=True, blank=True)
+    imgThumb = models.ImageField(upload_to="media_img", null=True, blank=True)
 
     def __str__(self):
         return self.title_with_year()
