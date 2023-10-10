@@ -8,5 +8,5 @@ class Article(models.Model):
     year = models.PositiveSmallIntegerField(default=2023)
 
     def __str__(self):
-        return self.title
+        return self.title + ' (' + str(self.year) + ')'
 
