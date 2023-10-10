@@ -87,6 +87,25 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
+Dodanie pola do wgrywania mediów
+```sh
+from django.db import models
+
+
+# Create your models here.
+class Article(models.Model):
+    title = models.CharField(max_length=250, blank=False, unique=False)
+    content = models.TextField(default='')
+    year = models.PositiveSmallIntegerField(default=2023)
+    imgThumb = models.ImageField(upload_to="media/img", null=True, blank=True)
+
+    def __str__(self):
+        return self.title_with_year()
+
+    def title_with_year(self):
+        return "{} ({})".format(self.title, self.year)
+```
+
 ### Linki
 Dokumentacja - [Dokumentacja 4.2](https://docs.djangoproject.com/en/4.2/)  
 Rodzaje pól - [Pola dla modeli](https://docs.djangoproject.com/en/4.2/ref/models/fields/)
