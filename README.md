@@ -42,3 +42,24 @@ Username: xman
 Email: szymon.guzik@gdansk.merito.pl
 Password: qwerty2023
 ```
+
+### Uzupełenienie modelu
+W aplikacji `crud_blog_web` znajduje się plik `models.py`. 
+Plik ten należy uzupełnić w celu wygenerowanie na jego podstawie migracji
+```shell
+class Article(models.Model):
+    title = models.CharField(max_length=64)
+```
+ten zapis oznacza, że pole title będzie miało długość 64 znaków
+
+
+### Tworzenie migracji na podstawie modelu
+```sh
+python manage.py makemigrations
+```
+Została wygenerowana migracja w lokalizacji
+`crud_blog_web -> mogrations` <br>
+Teraz należy wykonać ponownie migracje za pomocą polecenia
+```sh 
+python manage.py migrate
+```
