@@ -106,6 +106,20 @@ class Article(models.Model):
         return "{} ({})".format(self.title, self.year)
 ```
 ### Zarządzanie polami w adminie
+Dodanie dekoratora oraz klasy AdminArticle
+```sh
+from django.contrib import admin
+from .models import Article
+
+
+# Register your models here.
+# admin.site.register(Article)
+
+# Użycie klasy Admin jako dekorator
+@admin.register(Article)
+class ArticleAdmin(admin.ModelAdmin):
+```
+
 Deklaracja używanych pól
 ```sh
 fields = ["title", "content", "year", "imgThumb"]
