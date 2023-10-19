@@ -105,7 +105,27 @@ class Article(models.Model):
     def title_with_year(self):
         return "{} ({})".format(self.title, self.year)
 ```
-
+### Zarządzanie polami w adminie
+Deklaracja używanych pól
+```sh
+fields = ["title", "content", "year", "imgThumb"]
+```
+Deklaracja wykluczonych pól
+```sh
+exclude = ["content"]
+```
+Deklaracja reprezentacji po stronie panelu admina (deklaracja listy)
+```sh
+list_display = ["title", "year"]
+```
+Dodawanie filtra w panelu w tym przypadku po roku
+```sh
+list_filter = ["year"]
+```
+Dodanie wyszukiwarki po stronie panelu wraz z deklaracją pól do przeszukiwania
+```sh
+search_fields = ["title", "content"]
+```
 ### Linki
 Dokumentacja - [Dokumentacja 4.2](https://docs.djangoproject.com/en/4.2/)  
 Rodzaje pól - [Pola dla modeli](https://docs.djangoproject.com/en/4.2/ref/models/fields/)
