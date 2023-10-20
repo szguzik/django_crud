@@ -162,7 +162,7 @@ def test_response(request):
     return HttpResponse("To jest przykładowy url")
 
 ```
-#### Tworzenie adressów na poziomie aplikacji (oddzielanie od głównego pliku z adresami)
+#### Tworzenie adresów na poziomie aplikacji (oddzielanie od głównego pliku z adresami)
 1. Stworzenie pliku `urls.py` w APLIKACJI
 2. Dopisanie routingu
 ```sh
