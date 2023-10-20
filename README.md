@@ -189,7 +189,7 @@ urlpatterns = [
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-         <span style="color:red;">'DIRS': ["templates"]</span>,
+        'DIRS': ["templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
