@@ -201,7 +201,7 @@ TEMPLATES = [
 - venv
 
 3. W katalogu pliku z urls.py (Aplikacja lub Projekt) dodanie metody do wybranego route
-4. W pliku views APLIKACJI dodanie metody z, która była wskazana w punkcie wyżej np.
+4. W pliku `views.py` APLIKACJI dodanie metody z, która była wskazana w punkcie wyżej np.
 ```sh
 from django.shortcuts import render
 ...
@@ -232,6 +232,82 @@ def all_articles(request):
 </html>
 ```
 Za pomocą `{ klucz_wartości }` zostaje przekazana wartość z pliku `aplikacja\views.py` - przykład w kodzie wyżej
+
+Poniższy przykład pokazuje pobieranie danych z bazy, dodanie opcji statycznych oraz stringa  
+Plik `views.py`
+```sh
+from django.shortcuts import render
+from django.http import HttpResponse
+from .models import Article
+
+
+# Create your views here.
+def test_response(request):
+    return HttpResponse("To jest przykładowy url")
+
+
+def all_articles(request):
+    title_page = "To jest tytuł strony"
+    options = [
+        "option 1",
+        "option2",
+        "option3"
+    ]
+
+    articles = Article.objects.all()
+
+    return render(
+        request,
+        'articles.html',
+        {
+            'title': title_page,
+            'options': options,
+            'articles': articles
+        }
+    )
+
+```
+Plik `articles.py`
+```sh
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--Ta wartość została przekazana z widoku - views.py w aplikacji-->
+    <h1>{{ title }}</h1>
+    <h2>Tutaj będą moje artykuły</h2>
+    <h3>To są opcje ustawione statycznie</h3>
+    {% for item in options %}
+    <p>{{ item }}</p>
+    {% endfor %}
+    <h3>To są artykuły pobrane z bazy za pomocą modelu - bez koniecznosci wskazywania na property</h3>
+    <h4>Nie musimy wskazywać property bo w modelu naszej aplikacji jest </h4>
+    <pre>
+        <code>
+            def __str__(self):
+              return self.title_with_year()
+
+        </code>
+    </pre>
+    <b>Przykład iteracji bez wskazywania na właściwość (property)</b>
+    {% for article in articles %}
+    <p>{{ article }}</p>
+    {% endfor %}
+
+    <b>Przykład iteracji ze wskazaniem właściwości (property)</b>
+    {% for article in articles %}
+    <p>{{ article.title }}</p>
+    {% endfor %}
+
+</body>
+</html>
+```
 
 ### Linki
 Dokumentacja - [Dokumentacja 4.2](https://docs.djangoproject.com/en/4.2/)  

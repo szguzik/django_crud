@@ -11,5 +11,28 @@
     <!--Ta wartość została przekazana z widoku - views.py w aplikacji-->
     <h1>{{ title }}</h1>
     <h2>Tutaj będą moje artykuły</h2>
+    <h3>To są opcje ustawione statycznie</h3>
+    {% for item in options %}
+    <p>{{ item }}</p>
+    {% endfor %}
+    <h3>To są artykuły pobrane z bazy za pomocą modelu - bez koniecznosci wskazywania na property</h3>
+    <h4>Nie musimy wskazywać property bo w modelu naszej aplikacji jest </h4>
+    <pre>
+        <code>
+            def __str__(self):
+              return self.title_with_year()
+
+        </code>
+    </pre>
+    <b>Przykład iteracji bez wskazywania na właściwość (property)</b>
+    {% for article in articles %}
+    <p>{{ article }}</p>
+    {% endfor %}
+
+    <b>Przykład iteracji ze wskazaniem właściwości (property)</b>
+    {% for article in articles %}
+    <p>{{ article.title }}</p>
+    {% endfor %}
+
 </body>
 </html>

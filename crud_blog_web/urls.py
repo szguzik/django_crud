@@ -1,5 +1,5 @@
 from django.urls import path
-from crud_blog_web.views import test_response
+from crud_blog_web.views import all_articles
 urlpatterns = [
-    path('test/', test_response),
+    path('test/', all_articles),
 ]
