@@ -3,6 +3,9 @@ from django.db import models
 
 # Create your models here.
 class Article(models.Model):
+    # Pole objects w tym modelu służy do pobierania obiektów z tabeli Articles
+    # Domyślnie ustawione na None
+    objects = None
     # Pole title - ilość znaków 250, pole nie może być puste,  pole nie musi być unikalne
     title = models.CharField(max_length=250, blank=False, unique=False)
     # Pole content przyjmuje dowolną ilośc znaków, domyślnie ustawia pusty string
