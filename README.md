@@ -162,6 +162,27 @@ def test_response(request):
     return HttpResponse("To jest przykładowy url")
 
 ```
+#### Tworzenie adressów na poziomie aplikacji (oddzielanie od głównego pliku z adresami)
+1. Stworzenie pliku `urls.py` w APLIKACJI
+2. Dopisanie routingu
+```sh
+from django.urls import path
+from crud_blog_web.views import test_response
+urlpatterns = [
+    path('test/', test_response),
+]
+```
+3. Dodanie obsługi routingu w pliku `urls.py` PROJEKTU np. (`path('crud-blog/', include("crud_blog_web.urls"))`)
+```sh
+from django.contrib import admin
+from django.urls import path, include
+from crud_blog_web.views import test_response
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('test/', test_response),
+    path('crud-blog/', include("crud_blog_web.urls")),
+```
 ### Linki
 Dokumentacja - [Dokumentacja 4.2](https://docs.djangoproject.com/en/4.2/)  
 Rodzaje pól - [Pola dla modeli](https://docs.djangoproject.com/en/4.2/ref/models/fields/)
