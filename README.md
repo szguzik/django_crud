@@ -183,6 +183,26 @@ urlpatterns = [
     path('test/', test_response),
     path('crud-blog/', include("crud_blog_web.urls")),
 ```
+### Templates
+1. Deklaracja templates w pliku konfiguracyjnym projektu (`settings.py`)
+```sh
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+         <span style="color:red;">'DIRS': ["templates"]</span>,
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+```
+
 ### Linki
 Dokumentacja - [Dokumentacja 4.2](https://docs.djangoproject.com/en/4.2/)  
 Rodzaje pól - [Pola dla modeli](https://docs.djangoproject.com/en/4.2/ref/models/fields/)
