@@ -184,24 +184,54 @@ urlpatterns = [
     path('crud-blog/', include("crud_blog_web.urls")),
 ```
 ### Templates
-1. Deklaracja templates w pliku konfiguracyjnym projektu (`settings.py`)
+1. Deklaracja templates w pliku konfiguracyjnym PROJEKTU (`settings.py`)
 ```sh
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': ["templates"],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
+        ...
     },
 ]
 ```
+2. Tworzenie katalogu tempates w głównym katalogu
+- crud_blog
+- crud_blog_web
+- templates
+- venv
+
+3. W katalogu pliku z urls.py (Aplikacja lub Projekt) dodanie metody do wybranego route
+4. W pliku views APLIKACJI dodanie metody z, która była wskazana w punkcie wyżej np.
+```sh
+from django.shortcuts import render
+...
+def all_articles(request):
+    title_page = "To jest tytuł strony"
+    return render(
+        request,
+        'articles.html',
+        {'title': title_page}
+    )
+```
+5. Stworzenie w katalogu `templates` pliku `articles.html` i dodać kod html 
+```sh
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--Ta wartość została przekazana z widoku - views.py w aplikacji-->
+    <h1>{{ title }}</h1>
+    <h2>Tutaj będą moje artykuły</h2>
+</body>
+</html>
+```
+Za pomocą `{ klucz_wartości }` zostaje przekazana wartość z pliku `aplikacja\views.py` - przykład w kodzie wyżej
 
 ### Linki
 Dokumentacja - [Dokumentacja 4.2](https://docs.djangoproject.com/en/4.2/)  
