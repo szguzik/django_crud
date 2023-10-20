@@ -140,6 +140,28 @@ Dodanie wyszukiwarki po stronie panelu wraz z deklaracją pól do przeszukiwania
 ```sh
 search_fields = ["title", "content"]
 ```
+### Tworzenie adresów WWW (path)
+Plik `urls.py z projektu a nie aplikacji`
+```sh
+from django.contrib import admin
+from django.urls import path
+from crud_blog_web.views import test_response
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('test/', test_response),
+]
+```
+W widoku aplikacji (`views.py  aplikacji`)
+```sh
+from django.shortcuts import render
+from django.http import HttpResponse
+
+
+# Create your views here.
+def test_response(request):
+    return HttpResponse("To jest przykładowy url")
+
+```
 ### Linki
 Dokumentacja - [Dokumentacja 4.2](https://docs.djangoproject.com/en/4.2/)  
 Rodzaje pól - [Pola dla modeli](https://docs.djangoproject.com/en/4.2/ref/models/fields/)

@@ -16,7 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from crud_blog_web.views import test_response
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('test/', test_response),
 ]
