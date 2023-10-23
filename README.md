@@ -328,6 +328,37 @@ Plik `articles.py`
 </body>
 ```
 
+### ORM w Django
+Pobieranie wpisów o konkretnym tytule  
+```sh
+articles = Article.objects.get(title="Testowy")
+```
+lub  
+```sh
+articles = Article.objects.get(id=1)
+```
+Pobieranie wpisów o konkretnym tytule (tutaj będzie błąd i program się wysypie)  
+```sh
+articles = Article.objects.get(title="Testowy2nieIstnieje")
+```
+Pobieranie wpisów o konkretnym tytule (Nic nie zostanie znalezione ale sie nie wysypie)  
+```sh
+articles = Article.objects.filter(title="Testowy2nieIstnieje")
+```
+Pobieranie wpisów o konkretnym tytule (filter zwraca tylko znalezione wpisy)  
+```sh
+articles = Article.objects.filter(title="Testowy")
+```
+Tworzenie nowych wpisów np. z konsole ale można tego też używać w kodzie
+```sh
+Article.objects.create(title="Wpis z konsoli", year=2024, content="Tresc wprowadzona z konsoli") 
+```
+Kasowanie za pomocą wywołania metowy delete (technika  "łańcuchowanie metod" (ang. method chaining))  
+```sh
+articles = Article.objects.get(id=1).delete()
+
+```
+
 ### Linki
 Dokumentacja - [Dokumentacja 4.2](https://docs.djangoproject.com/en/4.2/)  
 Rodzaje pól - [Pola dla modeli](https://docs.djangoproject.com/en/4.2/ref/models/fields/)
