@@ -52,6 +52,9 @@ działa if
 <p>{{ article.imgThumb }}</p>
 <!--Statyczny plik podany dla przykładu-->
 <!--<img src="{% static 'my_app/example.jpg' %}" alt="My image">-->
+
+<!--Dynamiczny plik podany dla przykładu-->
+<img src="/media/{{ article.imgThumb }}" alt="{{ article.title }}" title="{{ article.title }}">
 {% endfor %}
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

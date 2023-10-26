@@ -395,6 +395,22 @@ Wczytywanie ich idbywa się w analogiczny sposób ale aby zobaczyć elekty nale�
 <link rel="stylesheet" href="{% static 'crud_blog_web.css' %}">
 
 ```
+### Wyświetlanie zdjęć
+
+W `settings.py` projektu należy ustawić
+```sh
+MEDIA_URL = '/media/'
+MEDIA_ROOT = 'media'
+```
+Następnie w szyblonie (np `articless.html`) dodac wywołanie zdjęcia ze wskazaniem katalogu prefixowego (`media`)  
+Taki jest właśnie zadeklarowany "dwie linijki wyżej"
+```sh
+<img src="/media/{{ article.imgThumb }}" alt="{{ article.title }}" title="{{ article.title }}">
+```
+
+
+
 ### Linki
 Dokumentacja - [Dokumentacja 4.2](https://docs.djangoproject.com/en/4.2/)  
-Rodzaje pól - [Pola dla modeli](https://docs.djangoproject.com/en/4.2/ref/models/fields/)
+Rodzaje pól - [Pola dla modeli](https://docs.djangoproject.com/en/4.2/ref/models/fields/)  
+Statyczne URL - [Statyczne Pola](https://docs.djangoproject.com/en/4.2/howto/static-files/#s-serving-static-files-during-development)
