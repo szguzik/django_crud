@@ -356,7 +356,6 @@ Article.objects.create(title="Wpis z konsoli", year=2024, content="Tresc wprowad
 Kasowanie za pomocą wywołania metowy delete (technika  "łańcuchowanie metod" (ang. method chaining))  
 ```sh
 articles = Article.objects.get(id=1).delete()
-
 ```
 
 ### Linki
