@@ -3,8 +3,10 @@ from django.urls import path, include
 from crud_blog_web.views import test_response
 from django.conf import settings
 from django.conf.urls.static import static
+from crud_blog_web.views import all_articles
 
 urlpatterns = [
+    path('', all_articles),
     path('admin/', admin.site.urls),
     path('test/', test_response),
     path('crud-blog/', include("crud_blog_web.urls")),
