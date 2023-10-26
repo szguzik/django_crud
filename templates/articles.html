@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,13 +8,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'crud_blog_web.css' %}">
 
-    <title>Document</title>
+    <title>{{ title }}</title>
 </head>
 <body>
 <div class="alert alert-primary" role="alert">
     A simple primary alert—check it out!
 </div>
+<h1 class="cRed">To jest kolor z pliku styles.css globalnego</h1>
+<h1 class="cbw-cGreen">To jest kolor z pliku crud_blog_web.css aplikacji</h1>
 <!--Ta wartość została przekazana z widoku - views.py w aplikacji-->
 <h1>{{ title }}</h1>
 <h2>Tutaj będą moje artykuły</h2>
@@ -45,6 +50,8 @@ działa if
 {% for article in articles %}
 <p>{{ article.title }}</p>
 <p>{{ article.imgThumb }}</p>
+<!--Statyczny plik podany dla przykładu-->
+<!--<img src="{% static 'my_app/example.jpg' %}" alt="My image">-->
 {% endfor %}
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

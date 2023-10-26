@@ -358,6 +358,43 @@ Kasowanie za pomocą wywołania metowy delete (technika  "łańcuchowanie metod"
 articles = Article.objects.get(id=1).delete()
 ```
 
+### Pliki statyczne
+w `settings.py` projektu należy odszukać lub dodać deklaracje
+```sh
+STATIC_URL = 'static/'
+# Static directories (Global)
+STATICFILES_DIRS = ['assets']
+```
+W tablicy `STATICFILES_DIRS` są dodane katalogi zawierające pliki statyczne np pliki css, js, media
+W stringu `STATIC_URL` jest zdeklarowany prefix zawierający nazwę "lokalizacji" dla naszego plikiem 
+
+W głównym katalogu aplikacji należy utworzyć katalog `assets` a w nim plik statyczny np. `styles.css`
+```
+project-blog
+|- /assets/
+|  |-styles.css
+```
+Na samym początku szablonu np. `articles.html` trzeba zdeklarować używanie plików statycznych
+```sh
+{% load static %}
+<!doctype html>
+```
+Używanie plików sstatycznych zostaje wywołane w następujący sposób
+```sh
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+```
+Pliki statyczne można również deklarować wewnątrz aplikacji w katalogu static
+```
+project-blog
+|- /crud_blog_web/
+|  |-/static/
+|  | |-crud_blog_web.css
+```
+Wczytywanie ich idbywa się w analogiczny sposób ale aby zobaczyć elekty należy zrestartować serwer
+```sh
+<link rel="stylesheet" href="{% static 'crud_blog_web.css' %}">
+
+```
 ### Linki
 Dokumentacja - [Dokumentacja 4.2](https://docs.djangoproject.com/en/4.2/)  
 Rodzaje pól - [Pola dla modeli](https://docs.djangoproject.com/en/4.2/ref/models/fields/)
