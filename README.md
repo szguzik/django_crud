@@ -267,7 +267,7 @@ def all_articles(request):
     )
 
 ```
-Plik `articles.py`
+Plik `articles.html`
 ```sh
 <!doctype html>
 <html lang="en">
